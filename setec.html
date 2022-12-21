@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Setec</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            // FETCHING DATA FROM JSON FILE
+            $.getJSON("setec.json",
+                function (data) {
+                    var student = '';
+
+                    // ITERATING THROUGH OBJECTS
+                    $.each(data, function (key, value) {
+
+                        //CONSTRUCTION OF ROWS HAVING
+                        // DATA FROM JSON OBJECT
+                        student += '<div class="laptopce">';
+                        student += '<h1>' +
+                            value.name + '</h1>';
+
+                        student += '<p>Happy цена:' +
+                            value.klubCena + 'ден.</p>';
+
+                        student += '<p>Редовна цена:' +
+                            value.redovnaCena + 'ден.</p>';
+
+                        student += '<p> <a href="'+value.url+'"> ' +
+                            value.url + '</a></p>';
+
+                        student += '</div>';
+                    });
+
+                    //INSERTING ROWS INTO TABLE
+                    $('#table').append(student);
+                });
+        });
+    </script>
+    <style>
+        #table{
+            padding:0;
+            margin:0;
+            box-sizing:border-box;
+            width:100%;
+        }
+        .laptopce{
+            display:inline-block;
+            width:24%;
+            height: 300px;
+            border: 2px solid black;
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+<h2><a href="index.html">HOME</a></h2>
+<h2><a href="neptun.html">NEPTUN</a></h2>
+<h2><a href="setec.html">SETEC</a></h2>
+<div id='table'>
+    <!-- HEADING FORMATION -->
+</div>
+</body>
+</html>
